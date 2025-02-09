@@ -1,5 +1,6 @@
 import AdmZip from "adm-zip";
 import { dirname } from "path";
+import { readFile } from "fs/promises";
 
 
 /**
@@ -33,4 +34,15 @@ export function getProjectRoot(): string {
             dirname(__dirname)
         )
     );
+}
+
+/**
+ * Simple helper function which asynchronously reads in a JSON file to memory.
+ * 
+ * @param filePath The path to the file to read.
+ * @returns The parsed file contents.
+ */
+export async function readJSONFile<O = object>(filePath: string): Promise<O> {
+    const fileContent = await readFile(filePath, "utf-8");
+    return JSON.parse(fileContent);
 }
