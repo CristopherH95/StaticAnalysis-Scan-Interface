@@ -1,0 +1,38 @@
+{
+  "name": "scanner-utils",
+  "version": "1.0.0",
+  "description": "Package for aggregated scanning utility",
+  "main": "index.js",
+  "scripts": {
+    "codeque": "eslint --debug -c eslintrc.js src/**/*",
+    "semgrep": "semgrep scan --config \"p/cwe-top-25\" src/"
+  },
+  "keywords": [
+    "SAST",
+    "semgrep",
+    "codeque",
+    "analysis",
+    "security"
+  ],
+  "dependencies": {
+    "@azure/storage-blob": "^12.25.0",
+    "@codeque/eslint-plugin": "^0.1.0",
+    "@microsoft/eslint-formatter-sarif": "^3.1.0",
+    "@microsoft/sarif-multitool": "^4.5.4",
+    "@trpc/server": "^10.45.2",
+    "@typescript-eslint/parser": "^8.10.0",
+    "adm-zip": "^0.5.16",
+    "eslint": "^8.34.0",
+    "node-sarif-builder": "^3.2.0",
+    "uuid": "^11.0.3",
+    "zod": "^3.23.8"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.6",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.9.0",
+    "typescript": "^5.6.3"
+  }
+}
