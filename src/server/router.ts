@@ -54,5 +54,13 @@ export const appRouter = router({
             };
         }
         
+    }),
+    health: publicProcedure.query(async () => {
+        return {
+            message: "Scanner system live.",
+            timestamp: (new Date()).toISOString()
+        };
     })
 });
+
+export type AppRouter = typeof appRouter;

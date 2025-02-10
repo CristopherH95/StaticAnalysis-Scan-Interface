@@ -10,15 +10,15 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN mkdir /scanner && mkdir /scanner/src
+RUN mkdir -p /scanner/src
 WORKDIR /scanner
 COPY package.json package.json
 COPY package-lock.json package-lock.json
-COPY eslintrc.js eslintrc.js
+RUN npm install
+COPY src/ /scanner/src
+COPY tsconfig.json tsconfig.json
+RUN npm run build
+COPY entry.sh entry.sh
+RUN chmod +x entry.sh
 
-RUN npm install && npm run build
-
-COPY dist/ /scanner/src
-COPY entry.sh /scanner/
-
-ENTRYPOINT [ "entry.sh" ]
+ENTRYPOINT [ "/scanner/entry.sh" ]
