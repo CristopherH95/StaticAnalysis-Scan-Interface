@@ -19,3 +19,6 @@ COPY eslintrc.js eslintrc.js
 RUN npm install && npm run build
 
 COPY dist/ /scanner/src
+COPY entry.sh /scanner/
+
+ENTRYPOINT [ "entry.sh" ]
