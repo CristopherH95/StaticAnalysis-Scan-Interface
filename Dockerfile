@@ -16,4 +16,6 @@ COPY package.json package.json
 COPY package-lock.json package-lock.json
 COPY eslintrc.js eslintrc.js
 
-RUN npm install
+RUN npm install && npm run build
+
+COPY dist/ /scanner/src
